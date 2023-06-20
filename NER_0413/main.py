@@ -1,7 +1,7 @@
 
 from data import build_corpus
 from utils import extend_maps, prepocess_data_for_lstmcrf
-from evaluate import hmm_train_eval, crf_train_eval, \
+from evaluate import crf_train_eval, \
     bilstm_train_and_eval, ensemble_evaluate
 
 

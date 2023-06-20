@@ -273,3 +273,13 @@ class BiLSTM_CRF(nn.Module):
 
         # 返回解码的结果
         return tagids
+
+    def predict(self, test_sents_tensor, lengths, tag2id, id2tag):
+        """使用维特比算法进行解码，并将标记转换为标记名称"""
+        tagids = self.test(test_sents_tensor, lengths, tag2id)
+        # 将标记id转换为标记名称
+        tags = []
+        for i in range(tagids.size(0)):
+            tag_list = [id2tag[tagid.item()] for tagid in tagids[i]]
+            tags.append(tag_list)
+        return tags
